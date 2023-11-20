@@ -18,6 +18,8 @@
 
 [Story of a Hundred Vulnerable Jenkins Plugins](https://research.nccgroup.com/2019/05/02/story-of-a-hundred-vulnerable-jenkins-plugins/)
 
+[Exploiting Jenkins Groovy Script Console in Multiple Ways](https://www.hackingarticles.in/exploiting-jenkins-groovy-script-console-in-multiple-ways/)
+
 ## Extras
 Reverse shell from Groovy
 -------------------------
