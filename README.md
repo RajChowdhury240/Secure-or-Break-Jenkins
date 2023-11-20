@@ -16,6 +16,8 @@
 
 [Secure Jenkins CI/CD by Crowdstrike](https://www.crowdstrike.com/blog/tech-center/securing-your-jenkins-ci-cd-container-pipeline-with-crowdstrike/)
 
+[Story of a Hundred Vulnerable Jenkins Plugins](https://research.nccgroup.com/2019/05/02/story-of-a-hundred-vulnerable-jenkins-plugins/)
+
 ## Extras
 Reverse shell from Groovy
 -------------------------
