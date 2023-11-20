@@ -11,7 +11,7 @@
 
 [CI/CD Pipeline Security - AWS](https://www.youtube.com/watch?v=BprhSs1eSWw)
 
-### Writeup
+### Blogs
 [RCE in Jenkins](https://faizal-ctf.notion.site/Jenkins-Remote-Execution-Via-Malicious-Jobs-1247f23b95f043c08e5e7e0c183223ad?pvs=4)
 
 [Secure Jenkins CI/CD by Crowdstrike](https://www.crowdstrike.com/blog/tech-center/securing-your-jenkins-ci-cd-container-pipeline-with-crowdstrike/)
@@ -19,6 +19,8 @@
 [Story of a Hundred Vulnerable Jenkins Plugins](https://research.nccgroup.com/2019/05/02/story-of-a-hundred-vulnerable-jenkins-plugins/)
 
 [Exploiting Jenkins Groovy Script Console in Multiple Ways](https://www.hackingarticles.in/exploiting-jenkins-groovy-script-console-in-multiple-ways/)
+
+[Implement DevSecOps to Secure your CI/CD pipeline](https://www.infracloud.io/blogs/implement-devsecops-secure-ci-cd-pipeline/)
 
 ## Extras
 Reverse shell from Groovy
