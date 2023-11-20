@@ -7,3 +7,5 @@
 [Hacking Jenkins - Orange Tsai](https://www.youtube.com/watch?v=_x8BsBnQPmU)
 
 [Best Practices for securing CI/CD Pipelines](https://www.youtube.com/watch?v=i3Bx1iSzrUY)
+
+[CI/CD Pipeline Security - AWS](https://www.youtube.com/watch?v=BprhSs1eSWw)
