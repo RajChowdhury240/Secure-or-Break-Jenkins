@@ -13,6 +13,7 @@
 
 ### Writeup
 [RCE in Jenkins](https://faizal-ctf.notion.site/Jenkins-Remote-Execution-Via-Malicious-Jobs-1247f23b95f043c08e5e7e0c183223ad?pvs=4)
+[Secure Jenkins CI/CD by Crowdstrike](https://www.crowdstrike.com/blog/tech-center/securing-your-jenkins-ci-cd-container-pipeline-with-crowdstrike/)
 
 ## Extras
 Reverse shell from Groovy
