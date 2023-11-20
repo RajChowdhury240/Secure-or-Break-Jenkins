@@ -69,7 +69,6 @@ msf> use auxiliary/scanner/http/jenkins_login
 ```
 =====================
 
-
 Deserialization RCE in old Jenkins (CVE-2015-8103, Jenkins 1.638 and older)
 ---------------------------------------------------------------------------
 Use [ysoserial](https://github.com/frohoff/ysoserial) to generate a payload.
@@ -134,3 +133,42 @@ CorePlague (CVE-2023-27898, CVE-2023-27905)
 
 Note that this is only exploitable if using a *dedicated* and out-of-date [Update Center](https://www.jenkins.io/templates/updates/). Therefore most servers are not vulnerable.
 
+
+Password spraying
+=================
+
+Use [this python script](./password_spraying/jenkins_password_spraying.py) or [this powershell script](https://github.com/chryzsh/JenkinsPasswordSpray).
+
+
+Files to copy after compromission
+=================================
+
+These files are needed to decrypt Jenkins secrets:
+
+* secrets/master.key
+* secrets/hudson.util.Secret
+
+Such secrets can usually be found in:
+
+* credentials.xml
+* jobs/.../build.xml
+
+Here's a regexp to find them:
+```bash
+grep -re "^\s*<[a-zA-Z]*>{[a-zA-Z0-9=+/]*}<"
+```
+
+
+Decrypt Jenkins secrets offline
+===============================
+
+Use [this script](./offline_decryption/jenkins_offline_decrypt.py) to decrypt previsously dumped secrets.
+
+```
+Usage:
+	jenkins_offline_decrypt.py <jenkins_base_path>
+or:
+	jenkins_offline_decrypt.py <master.key> <hudson.util.Secret> [credentials.xml]
+or:
+	jenkins_offline_decrypt.py -i <path> (interactive mode)
+```
