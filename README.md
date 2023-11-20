@@ -14,6 +14,8 @@
 ### Blogs
 [RCE in Jenkins](https://faizal-ctf.notion.site/Jenkins-Remote-Execution-Via-Malicious-Jobs-1247f23b95f043c08e5e7e0c183223ad?pvs=4)
 
+[Playing with Jenkins RCE Vulnerability by 0xdf](https://0xdf.gitlab.io/2019/02/27/playing-with-jenkins-rce-vulnerability.html)
+
 [Secure Jenkins CI/CD by Crowdstrike](https://www.crowdstrike.com/blog/tech-center/securing-your-jenkins-ci-cd-container-pipeline-with-crowdstrike/)
 
 [Story of a Hundred Vulnerable Jenkins Plugins](https://research.nccgroup.com/2019/05/02/story-of-a-hundred-vulnerable-jenkins-plugins/)
