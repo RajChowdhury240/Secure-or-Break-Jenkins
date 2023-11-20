@@ -1,5 +1,6 @@
 # Secure-or-Break-Jenkins
-101 of Jenkins Hacking &amp; patching....
+## Hack Jenkins! it's sweet
+![](https://e5s6t7j5.rocketcdn.me/wp-content/uploads/2022/02/Jenkins-Best-Security-Practices.png)
 
 ### Talks
 [BlackHat USA 2022](https://www.youtube.com/watch?v=Pe9nJLZvABM)
